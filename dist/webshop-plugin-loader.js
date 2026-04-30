@@ -58,8 +58,8 @@ function readScriptConfig() {
     return {};
   }
 
-  const currentScript = document.currentScript;
-  if (!currentScript || typeof currentScript !== 'object' || !('dataset' in currentScript)) {
+  const loaderScript = resolveLoaderScriptElement();
+  if (!loaderScript || typeof loaderScript !== 'object' || !('dataset' in loaderScript)) {
     return {};
   }
 
@@ -72,7 +72,7 @@ function readScriptConfig() {
     currency,
     storageKeyPrefix,
     testMode,
-  } = currentScript.dataset || {};
+  } = loaderScript.dataset || {};
 
   return compactConfig({
     apiBaseUrl: sanitizeString(apiBaseUrl),
@@ -84,6 +84,36 @@ function readScriptConfig() {
     storageKeyPrefix: sanitizeString(storageKeyPrefix),
     testMode: parseBoolean(testMode),
   });
+}
+
+function resolveLoaderScriptElement() {
+  if (typeof document === 'undefined') {
+    return null;
+  }
+
+  const currentScript = document.currentScript;
+  if (currentScript && typeof currentScript === 'object' && 'dataset' in currentScript) {
+    return currentScript;
+  }
+
+  const scriptElements = document.querySelectorAll('script[src]');
+  for (const scriptElement of scriptElements) {
+    const src = scriptElement.getAttribute('src');
+    if (!src) {
+      continue;
+    }
+
+    try {
+      const absoluteScriptUrl = new URL(src, document.baseURI).href;
+      if (absoluteScriptUrl === import.meta.url) {
+        return scriptElement;
+      }
+    } catch {
+      // Ignore malformed URLs and continue searching.
+    }
+  }
+
+  return null;
 }
 
 function sanitizeString(value) {
