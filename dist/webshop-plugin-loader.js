@@ -3,7 +3,7 @@ const runtimeScope = globalThis;
 const loaderState = runtimeScope[LOADER_RUNTIME_KEY] || (runtimeScope[LOADER_RUNTIME_KEY] = {});
 const baseUrl = new URL('./', import.meta.url);
 const stylesheetFile = "styles-2EQ4EK4A.css";
-const entryModuleFile = "main-WQI4LHDB.js";
+const entryModuleFile = "main-43WMWRF7.js";
 
 ensureStylesheet(baseUrl, stylesheetFile);
 await ensureEntryModule(baseUrl, entryModuleFile);
