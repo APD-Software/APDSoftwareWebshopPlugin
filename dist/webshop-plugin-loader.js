@@ -3,7 +3,7 @@ const runtimeScope = globalThis;
 const loaderState = runtimeScope[LOADER_RUNTIME_KEY] || (runtimeScope[LOADER_RUNTIME_KEY] = {});
 const baseUrl = new URL('./', import.meta.url);
 const stylesheetFile = "styles-5AYUZX4H.css";
-const entryModuleFile = "main-3BMPQ663.js";
+const entryModuleFile = "main-VBS3MKPG.js";
 
 loaderState.defaultConfig = mergeDefinedConfig(loaderState.defaultConfig, readScriptConfig());
 
