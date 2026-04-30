@@ -3,7 +3,7 @@ const runtimeScope = globalThis;
 const loaderState = runtimeScope[LOADER_RUNTIME_KEY] || (runtimeScope[LOADER_RUNTIME_KEY] = {});
 const baseUrl = new URL('./', import.meta.url);
 const stylesheetFile = "styles-5AYUZX4H.css";
-const entryModuleFile = "main-3L5MYDKY.js";
+const entryModuleFile = "main-FO3I6JKE.js";
 
 loaderState.defaultConfig = mergeDefinedConfig(loaderState.defaultConfig, readScriptConfig());
 
@@ -72,6 +72,7 @@ function readScriptConfig() {
     currency,
     storageKeyPrefix,
     testMode,
+    openOnMount,
   } = loaderScript.dataset || {};
 
   return compactConfig({
@@ -83,6 +84,7 @@ function readScriptConfig() {
     currency: sanitizeString(currency),
     storageKeyPrefix: sanitizeString(storageKeyPrefix),
     testMode: parseBoolean(testMode),
+    openOnMount: parseBoolean(openOnMount),
   });
 }
 
