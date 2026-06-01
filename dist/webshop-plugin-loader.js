@@ -2,8 +2,8 @@ const LOADER_RUNTIME_KEY = '__apdsoftwareWebshopPluginLoaderRuntime';
 const runtimeScope = globalThis;
 const loaderState = runtimeScope[LOADER_RUNTIME_KEY] || (runtimeScope[LOADER_RUNTIME_KEY] = {});
 const baseUrl = new URL('./', import.meta.url);
-const stylesheetFile = "styles-VD56KCPJ.css";
-const entryModuleFile = "main-OKEZWUG6.js";
+const stylesheetFile = "styles-YHLL7HTF.css";
+const entryModuleFile = "main-ZIWIWFTN.js";
 
 loaderState.defaultConfig = mergeDefinedConfig(loaderState.defaultConfig, readScriptConfig());
 
